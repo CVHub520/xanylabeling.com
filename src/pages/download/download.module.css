@@ -1,0 +1,282 @@
+.page {
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: clamp(5rem, 9vw, 8rem) 0 clamp(6rem, 10vw, 9rem);
+}
+
+.hero {
+  max-width: 900px;
+  margin-bottom: clamp(3.5rem, 6vw, 5rem);
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  color: var(--xa-brand);
+  font-size: 0.72rem;
+  font-weight: 720;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  color: var(--xa-text);
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  font-weight: 740;
+  letter-spacing: -0.067em;
+  line-height: 0.9;
+  text-wrap: balance;
+}
+
+.title span {
+  display: block;
+  color: var(--xa-text-tertiary);
+}
+
+:global(html[lang='zh-Hans']) .title {
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+
+.lede {
+  max-width: 700px;
+  margin: 1.7rem 0 0;
+  color: var(--xa-text-secondary);
+  font-size: clamp(1rem, 1.7vw, 1.18rem);
+  line-height: 1.7;
+}
+
+.choiceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.choiceCard {
+  display: flex;
+  min-height: 34rem;
+  flex-direction: column;
+  overflow: hidden;
+  padding: clamp(2rem, 4vw, 3rem);
+  border: 1px solid var(--xa-border);
+  border-radius: 2rem;
+  box-shadow: var(--xa-shadow-sm);
+}
+
+.supportCard {
+  background:
+    radial-gradient(circle at 88% 10%, rgba(255, 255, 255, 0.13), transparent 30%),
+    radial-gradient(circle at 4% 96%, rgba(54, 120, 111, 0.25), transparent 38%),
+    #a53f21;
+  color: white;
+}
+
+.freeCard {
+  background:
+    radial-gradient(circle at 92% 10%, var(--xa-brand-soft), transparent 31%),
+    var(--xa-surface);
+  color: var(--xa-text);
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cardTop > span {
+  display: inline-flex;
+  min-height: 1.9rem;
+  align-items: center;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 720;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.supportCard .cardTop > span {
+  background: rgba(255, 255, 255, 0.13);
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.freeCard .cardTop > span {
+  background: var(--xa-brand-soft);
+  color: var(--xa-brand);
+}
+
+.cardTop i {
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.supportCard .cardTop i {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+}
+
+.freeCard .cardTop i {
+  background: var(--xa-surface-2);
+  color: var(--xa-brand);
+}
+
+.cardTop svg {
+  width: 1.45rem;
+  height: 1.45rem;
+  stroke: currentColor;
+  stroke-width: 1.55;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cardCopy {
+  margin-top: auto;
+  padding-top: 5rem;
+}
+
+.cardCopy h2 {
+  max-width: 550px;
+  margin: 0;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 720;
+  letter-spacing: -0.055em;
+  line-height: 1;
+  text-wrap: balance;
+}
+
+:global(html[lang='zh-Hans']) .cardCopy h2 {
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+
+.supportCard .cardCopy h2 {
+  color: white;
+}
+
+.freeCard .cardCopy h2 {
+  color: var(--xa-text);
+}
+
+.cardCopy p {
+  max-width: 53ch;
+  margin: 1.2rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.supportCard .cardCopy p {
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.freeCard .cardCopy p {
+  color: var(--xa-text-secondary);
+}
+
+.supportButton,
+.downloadButton {
+  display: inline-flex;
+  width: 100%;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 2rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.9rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.supportButton {
+  background: white;
+  box-shadow: 0 12px 30px rgba(61, 18, 7, 0.22);
+  color: #1b1c18 !important;
+}
+
+.downloadButton {
+  background: var(--xa-text);
+  box-shadow: 0 12px 30px rgba(27, 28, 24, 0.14);
+  color: var(--xa-page) !important;
+}
+
+.supportButton:hover,
+.downloadButton:hover {
+  transform: translateY(-1px);
+}
+
+.supportButton:active,
+.downloadButton:active {
+  transform: scale(0.985);
+}
+
+.supportButton svg,
+.downloadButton svg {
+  width: 1rem;
+  height: 1rem;
+  stroke: currentColor;
+  stroke-width: 1.45;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cardNote {
+  margin: 1rem 0 0;
+  font-size: 0.68rem;
+  font-weight: 620;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.supportCard .cardNote {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.freeCard .cardNote {
+  color: var(--xa-text-tertiary);
+}
+
+@media (max-width: 760px) {
+  .page {
+    width: calc(100% - 2rem);
+    padding-top: 4rem;
+  }
+
+  .title {
+    font-size: clamp(3.2rem, 15vw, 4.5rem);
+  }
+
+  .choiceGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .choiceCard {
+    min-height: 30rem;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+  }
+
+  .cardCopy {
+    padding-top: 4rem;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .supportButton,
+  .downloadButton {
+    transition: none;
+  }
+
+  .supportButton:hover,
+  .downloadButton:hover {
+    transform: none;
+  }
+}

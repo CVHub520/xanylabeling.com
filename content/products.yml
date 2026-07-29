@@ -1,0 +1,27 @@
+schema_version: 1
+
+products:
+  - id: x-anylabeling
+    name: X-AnyLabeling
+    repository: CVHub520/X-AnyLabeling
+    ref: main
+    manifest: docs/site.yml
+    docs_route: /docs/x-anylabeling
+    local_source:
+      env: XANYLABELING_SOURCE_PATH
+      candidates:
+        - ../X-AnyLabeling
+
+  - id: server
+    name: X-AnyLabeling-Server
+    repository: CVHub520/X-AnyLabeling-Server
+    ref: main
+    manifest: docs/site.yml
+    docs_plugin_id: x-anylabeling
+    docs_subdir: remote_service
+    docs_route: /docs/x-anylabeling/remote_service
+    generate_openapi_reference: false
+    local_source:
+      env: XANYLABELING_SERVER_SOURCE_PATH
+      candidates:
+        - ../X-AnyLabeling-Server

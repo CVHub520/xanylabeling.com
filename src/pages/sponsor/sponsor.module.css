@@ -1,0 +1,698 @@
+.page {
+  --page-pad: max(1.25rem, calc((100vw - 1200px) / 2));
+  overflow: hidden;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+  align-items: center;
+  gap: clamp(3rem, 8vw, 8rem);
+  min-height: 43rem;
+  padding: clamp(5rem, 9vw, 8rem) var(--page-pad);
+}
+
+.heroCopy {
+  max-width: 820px;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  color: var(--xa-brand);
+  font-size: 0.72rem;
+  font-weight: 720;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  color: var(--xa-text);
+  font-size: clamp(3.6rem, 7vw, 6.8rem);
+  font-weight: 740;
+  letter-spacing: -0.067em;
+  line-height: 0.9;
+  text-wrap: balance;
+}
+
+.title span {
+  display: block;
+  color: var(--xa-text-tertiary);
+}
+
+:global(html[lang='zh-Hans']) .title {
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+
+.lede {
+  max-width: 680px;
+  margin: 1.8rem 0 0;
+  color: var(--xa-text-secondary);
+  font-size: clamp(1rem, 1.7vw, 1.18rem);
+  line-height: 1.7;
+}
+
+.supportMark {
+  position: relative;
+  display: grid;
+  width: min(100%, 25rem);
+  aspect-ratio: 1;
+  place-items: center;
+  justify-self: end;
+}
+
+.markHalo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(183, 71, 37, 0.2), transparent 35%),
+    radial-gradient(circle at 68% 66%, rgba(54, 120, 111, 0.16), transparent 38%);
+  filter: blur(2px);
+}
+
+.markCard {
+  position: relative;
+  display: flex;
+  width: 16.5rem;
+  min-height: 20rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.44);
+  border-radius: 1.8rem;
+  background: color-mix(in srgb, var(--xa-surface) 88%, transparent);
+  box-shadow: 0 32px 75px rgba(27, 28, 24, 0.16);
+  transform: rotate(4deg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+[data-theme='dark'] .markCard {
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 34px 80px rgba(0, 0, 0, 0.38);
+}
+
+.markHeader {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  left: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.markHeader img {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 0.65rem;
+}
+
+.markHeader span {
+  color: var(--xa-text-tertiary);
+  font-size: 0.58rem;
+  font-weight: 760;
+  letter-spacing: 0.12em;
+}
+
+.markCard > svg {
+  width: 4.75rem;
+  height: 4.75rem;
+  margin-bottom: 1.6rem;
+  color: var(--xa-brand);
+  fill: var(--xa-brand-soft);
+  stroke: currentColor;
+  stroke-width: 1.55;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.markCard strong {
+  color: var(--xa-text);
+  font-size: 1.18rem;
+  letter-spacing: -0.035em;
+}
+
+.markCard small {
+  margin-top: 0.32rem;
+  color: var(--xa-text-tertiary);
+  font-size: 0.7rem;
+}
+
+.openPromise {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  margin: 0 auto;
+  padding: clamp(2rem, 4vw, 3.2rem);
+  border: 1px solid var(--xa-border);
+  border-radius: 1.5rem;
+  background: var(--xa-surface);
+  box-shadow: var(--xa-shadow-sm);
+}
+
+.openPromise > div:first-child {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  align-items: start;
+  gap: 1.2rem;
+}
+
+.promiseMark {
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(54, 120, 111, 0.12);
+  color: var(--xa-cyan);
+  font-size: 1.05rem;
+  font-weight: 760;
+}
+
+.promiseMark svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  stroke: currentColor;
+  stroke-width: 1.45;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.openPromise .eyebrow {
+  margin-bottom: 0.55rem;
+}
+
+.openPromise h2 {
+  margin: 0;
+  color: var(--xa-text);
+  font-size: clamp(1.45rem, 2.5vw, 2rem);
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+
+.openPromise p {
+  max-width: 700px;
+  margin: 0.65rem 0 0;
+  color: var(--xa-text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.promiseActions {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+
+.primaryButton,
+.stripeButton {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.75rem 1.15rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 690;
+  text-decoration: none !important;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.primaryButton {
+  background: var(--xa-text);
+  box-shadow: 0 8px 22px rgba(27, 28, 24, 0.12);
+  color: var(--xa-page) !important;
+}
+
+.primaryButton:hover,
+.stripeButton:hover {
+  transform: translateY(-1px);
+}
+
+.primaryButton:active,
+.stripeButton:active {
+  transform: scale(0.98);
+}
+
+.primaryButton svg,
+.stripeButton svg,
+.textLink svg {
+  width: 1rem;
+  height: 1rem;
+  stroke: currentColor;
+  stroke-width: 1.45;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding-left: 0.2rem;
+  color: var(--xa-text) !important;
+  font-size: 0.8rem;
+  font-weight: 680;
+  text-decoration: none !important;
+}
+
+.textLink svg {
+  transition: transform 150ms ease;
+}
+
+.textLink:hover svg {
+  transform: translateX(3px);
+}
+
+.methodsSection {
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 0 0 clamp(7rem, 11vw, 10rem);
+}
+
+.impactIntro h2 {
+  margin: 0;
+  color: var(--xa-text);
+  font-size: clamp(2.7rem, 5vw, 4.6rem);
+  font-weight: 730;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+:global(html[lang='zh-Hans']) .impactIntro h2 {
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.methodGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+  margin-top: 1rem;
+}
+
+.qrCard,
+.stripeCard {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--xa-border);
+  border-radius: 1.5rem;
+  background: var(--xa-surface);
+  box-shadow: var(--xa-shadow-sm);
+}
+
+.cardHeader {
+  display: flex;
+  min-height: 6.5rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.cardHeader h3 {
+  margin: 0;
+  color: var(--xa-text);
+  font-size: 1.15rem;
+  letter-spacing: -0.035em;
+}
+
+.cardHeader p {
+  margin: 0.35rem 0 0;
+  color: var(--xa-text-tertiary);
+  font-size: 0.72rem;
+}
+
+.methodBadge {
+  display: inline-flex;
+  min-height: 1.75rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.61rem;
+  font-weight: 760;
+  letter-spacing: -0.01em;
+}
+
+.wechatBadge {
+  background: rgba(7, 193, 96, 0.11);
+  color: #07974c;
+}
+
+.alipayBadge {
+  background: rgba(22, 119, 255, 0.11);
+  color: #1677ff;
+}
+
+.stripeBadge {
+  background: rgba(99, 91, 255, 0.16);
+  color: #8c85ff;
+}
+
+.qrFrame {
+  display: grid;
+  aspect-ratio: 1;
+  margin: 0 1.25rem;
+  overflow: hidden;
+  padding: clamp(0.9rem, 2vw, 1.2rem);
+  place-items: center;
+  border: 0;
+  border-radius: 1.2rem;
+}
+
+.wechatCard .qrFrame {
+  background:
+    radial-gradient(circle at 50% 45%, rgba(7, 193, 96, 0.1), transparent 66%),
+    color-mix(in srgb, var(--xa-surface-2) 70%, var(--xa-surface));
+}
+
+.alipayCard .qrFrame {
+  background:
+    radial-gradient(circle at 50% 45%, rgba(22, 119, 255, 0.1), transparent 66%),
+    color-mix(in srgb, var(--xa-surface-2) 70%, var(--xa-surface));
+}
+
+.qrFrame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border: clamp(0.55rem, 1.2vw, 0.75rem) solid #fff;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow:
+    0 16px 36px rgba(27, 28, 24, 0.08),
+    0 2px 8px rgba(27, 28, 24, 0.05);
+}
+
+.scanLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 4.5rem;
+  margin: auto 0 0;
+  color: var(--xa-text-secondary);
+  font-size: 0.78rem;
+  font-weight: 630;
+}
+
+.scanLabel svg {
+  width: 1rem;
+  height: 1rem;
+  color: var(--xa-text-tertiary);
+  stroke: currentColor;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.stripeCard {
+  background:
+    radial-gradient(circle at 88% 12%, rgba(99, 91, 255, 0.2), transparent 34%),
+    radial-gradient(circle at 8% 92%, rgba(183, 71, 37, 0.15), transparent 33%),
+    #1b1c18;
+  color: white;
+}
+
+.stripeCard .cardHeader h3 {
+  color: white;
+}
+
+.stripeCard .cardHeader p {
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.price {
+  display: flex;
+  min-height: 11rem;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.price strong {
+  color: white;
+  font-size: clamp(3.5rem, 6vw, 5.6rem);
+  font-weight: 710;
+  letter-spacing: -0.075em;
+  line-height: 0.9;
+}
+
+.price span {
+  margin-top: 0.75rem;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stripeCopy {
+  padding: 2rem 1.5rem 1.2rem;
+}
+
+.stripeCopy h4 {
+  margin: 0;
+  color: white;
+  font-size: 1.55rem;
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+}
+
+.stripeCopy p {
+  margin: 0.9rem 0 0;
+  color: rgba(255, 255, 255, 0.57);
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.stripeButton {
+  margin: auto 1.5rem 0;
+  border-radius: 0.85rem;
+  background: white;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  color: #1b1c18 !important;
+}
+
+.secureLabel {
+  display: flex;
+  min-height: 4.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 0.68rem;
+}
+
+.impactSection {
+  padding: clamp(6.5rem, 10vw, 9rem) var(--page-pad);
+  background: var(--xa-surface-2);
+}
+
+.impactIntro {
+  width: min(100%, 1200px);
+  max-width: 860px;
+  margin: 0 auto 3.5rem;
+}
+
+.impactGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  border-top: 1px solid var(--xa-border);
+  border-left: 1px solid var(--xa-border);
+}
+
+.impactGrid article {
+  min-height: 16rem;
+  padding: 2rem;
+  border-right: 1px solid var(--xa-border);
+  border-bottom: 1px solid var(--xa-border);
+  background: var(--xa-surface);
+}
+
+.impactGrid article > span {
+  color: var(--xa-text-tertiary);
+  font-size: 0.68rem;
+  font-weight: 680;
+}
+
+.impactGrid h3 {
+  margin: 3.5rem 0 0.75rem;
+  color: var(--xa-text);
+  font-size: 1.2rem;
+  letter-spacing: -0.035em;
+}
+
+.impactGrid p {
+  margin: 0;
+  color: var(--xa-text-secondary);
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.thanks {
+  width: min(100%, 850px);
+  margin: 3rem auto 0;
+  color: var(--xa-text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+@media (max-width: 996px) {
+  .page {
+    --page-pad: 1.5rem;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .supportMark {
+    width: min(100%, 22rem);
+    justify-self: center;
+  }
+
+  .openPromise {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .promiseActions {
+    padding-left: 4.2rem;
+  }
+
+  .methodGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stripeCard {
+    grid-column: 1 / -1;
+    min-height: 34rem;
+  }
+
+  .price {
+    min-height: 10rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    --page-pad: 1rem;
+  }
+
+  .hero {
+    min-height: 0;
+    gap: 3rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .title {
+    font-size: clamp(3.25rem, 15vw, 4.5rem);
+  }
+
+  .supportMark {
+    max-width: 19rem;
+  }
+
+  .markCard {
+    width: 13.5rem;
+    min-height: 16.5rem;
+  }
+
+  .openPromise {
+    width: 100%;
+    gap: 1.75rem;
+    padding: 1.5rem;
+  }
+
+  .openPromise > div:first-child {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    gap: 0.9rem;
+  }
+
+  .promiseMark {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .promiseActions {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .primaryButton {
+    width: 100%;
+  }
+
+  .methodsSection {
+    width: calc(100% - 2rem);
+  }
+
+  .impactIntro h2 {
+    font-size: clamp(2.5rem, 12vw, 3.5rem);
+  }
+
+  .methodGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .stripeCard {
+    grid-column: auto;
+  }
+
+  .qrFrame {
+    aspect-ratio: 1;
+  }
+
+  .impactGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .impactGrid article {
+    min-height: 13rem;
+  }
+
+  .impactGrid h3 {
+    margin-top: 2.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton,
+  .stripeButton,
+  .textLink svg {
+    transition: none;
+  }
+
+  .primaryButton:hover,
+  .stripeButton:hover,
+  .textLink:hover svg {
+    transform: none;
+  }
+}

@@ -1,0 +1,113 @@
+.socials {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.2rem;
+}
+
+.item {
+  position: relative;
+  display: inline-flex;
+}
+
+.iconLink,
+.iconButton {
+  display: inline-flex;
+  width: 2.2rem;
+  height: 2.2rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  cursor: pointer;
+  transition: background 140ms ease, transform 100ms ease;
+}
+
+.icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  opacity: 0.56;
+  transition: opacity 140ms ease;
+}
+
+.iconLink:hover,
+.iconButton:hover,
+.iconButton:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.iconLink:hover .icon,
+.iconLink:focus-visible .icon,
+.iconButton:hover .icon,
+.iconButton:focus-visible .icon {
+  opacity: 0.96;
+}
+
+.iconLink:active,
+.iconButton:active {
+  transform: scale(0.94);
+}
+
+.iconLink:focus-visible,
+.iconButton:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.72);
+  outline-offset: 2px;
+}
+
+.popover {
+  position: absolute;
+  z-index: 20;
+  bottom: calc(100% + 0.85rem);
+  left: 50%;
+  display: flex;
+  width: 13rem;
+  visibility: hidden;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 14px;
+  background: #121310;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.34);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 0.45rem);
+  transition: opacity 140ms ease, transform 140ms ease, visibility 140ms ease;
+}
+
+.item:hover .popover,
+.item:focus-within .popover {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.qr {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.caption {
+  padding: 0.65rem 0.75rem 0.7rem;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .socials {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.05rem;
+  }
+
+  .iconLink,
+  .iconButton {
+    width: 2rem;
+    height: 2rem;
+  }
+}

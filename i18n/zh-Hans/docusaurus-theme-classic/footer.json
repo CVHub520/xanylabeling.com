@@ -1,0 +1,74 @@
+{
+  "link.title.Product": {
+    "message": "产品",
+    "description": "The title of the footer links column with title=Product in the footer"
+  },
+  "link.title.Documentation": {
+    "message": "文档",
+    "description": "The title of the footer links column with title=Documentation in the footer"
+  },
+  "link.title.Community": {
+    "message": "社区",
+    "description": "The title of the footer links column with title=Community in the footer"
+  },
+  "link.title.Project": {
+    "message": "项目",
+    "description": "The title of the footer links column with title=Project in the footer"
+  },
+  "link.item.label.X-AnyLabeling": {
+    "message": "X-AnyLabeling",
+    "description": "The label of footer link with label=X-AnyLabeling linking to https://github.com/CVHub520/X-AnyLabeling"
+  },
+  "link.item.label.X-AnyLabeling-Server": {
+    "message": "X-AnyLabeling-Server",
+    "description": "The label of footer link with label=X-AnyLabeling-Server linking to https://github.com/CVHub520/X-AnyLabeling-Server"
+  },
+  "link.item.label.Docs home": {
+    "message": "文档首页",
+    "description": "The label of footer link with label=Docs home linking to /docs/x-anylabeling/get_started"
+  },
+  "link.item.label.Quick Start": {
+    "message": "快速入门",
+    "description": "The label of footer link with label=Quick Start linking to /docs/x-anylabeling/get_started"
+  },
+  "link.item.label.Model Zoo": {
+    "message": "模型库",
+    "description": "The label of footer link with label=Model Zoo linking to /docs/x-anylabeling/model_zoo"
+  },
+  "link.item.label.Remote Services": {
+    "message": "远程服务",
+    "description": "The label of footer link with label=Remote Services linking to /docs/x-anylabeling/remote_service/get_started"
+  },
+  "link.item.label.GitHub Discussions": {
+    "message": "GitHub 讨论区",
+    "description": "The label of footer link with label=GitHub Discussions linking to https://github.com/CVHub520/X-AnyLabeling/discussions"
+  },
+  "link.item.label.Report an Issue": {
+    "message": "报告问题",
+    "description": "The label of footer link with label=Report an Issue linking to https://github.com/CVHub520/X-AnyLabeling/issues"
+  },
+  "link.item.label.Contributing": {
+    "message": "参与贡献",
+    "description": "The label of footer link with label=Contributing linking to https://github.com/CVHub520/X-AnyLabeling/blob/main/CONTRIBUTING.md"
+  },
+  "link.item.label.Blog": {
+    "message": "博客",
+    "description": "The label of footer link with label=Blog linking to /blog"
+  },
+  "link.item.label.License": {
+    "message": "开源许可",
+    "description": "The label of footer link with label=License linking to https://github.com/CVHub520/X-AnyLabeling/blob/main/LICENSE"
+  },
+  "link.item.label.Contact": {
+    "message": "联系我们",
+    "description": "The label of footer link with label=Contact linking to mailto:cv_hub@163.com"
+  },
+  "link.item.label.Sponsor": {
+    "message": "赞助项目",
+    "description": "The label of footer link with label=Sponsor linking to /sponsor"
+  },
+  "copyright": {
+    "message": "© 2026 CVHub. All rights reserved.",
+    "description": "The footer copyright"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "title": {
+    "message": "X-AnyLabeling",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "X-AnyLabeling 标志",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Home": {
+    "message": "首页",
+    "description": "Navbar item with label Home"
+  },
+  "item.label.Docs": {
+    "message": "文档",
+    "description": "Navbar item with label Docs"
+  },
+  "item.label.Tasks": {
+    "message": "任务",
+    "description": "Navbar item with label Tasks"
+  },
+  "item.label.Workflows": {
+    "message": "工作流",
+    "description": "Navbar item with label Workflows"
+  },
+  "item.label.Blog": {
+    "message": "博客",
+    "description": "Navbar item with label Blog"
+  },
+  "item.label.Community": {
+    "message": "社区",
+    "description": "Navbar item with label Community"
+  },
+  "item.label.Sponsor": {
+    "message": "捐赠",
+    "description": "Navbar item with label Sponsor"
+  },
+  "item.label.v4.0.0-beta.13": {
+    "message": "v4.0.0-beta.13",
+    "description": "Navbar item with label v4.0.0-beta.13"
+  }
+}

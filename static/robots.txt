@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xanylabeling.com/sitemap.xml
+Sitemap: https://xanylabeling.com/zh-Hans/sitemap.xml
