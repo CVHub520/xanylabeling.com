@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 import remarkGitHubAlerts from './plugins/remarkGitHubAlerts';
 
 const GITHUB_REPO = 'CVHub520/X-AnyLabeling';
-const DEFAULT_RELEASE_LABEL = 'v4.0.0-beta.13';
+const DEFAULT_RELEASE_LABEL = 'v4.0.0';
 const DEFAULT_STAR_LABEL = '10k+';
 
 function escapeHtml(value: string): string {
@@ -256,7 +256,8 @@ export default async function createConfig(): Promise<Config> {
             ],
           },
         ],
-        copyright: '© 2026 CVHub. All rights reserved.',
+        copyright:
+          '© 2026 CVHub. All rights reserved. <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">粤ICP备2026108570号</a>',
       },
       prism: {
         theme: prismThemes.github,

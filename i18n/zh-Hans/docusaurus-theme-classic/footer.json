@@ -68,7 +68,7 @@
     "description": "The label of footer link with label=Sponsor linking to /sponsor"
   },
   "copyright": {
-    "message": "© 2026 CVHub. All rights reserved.",
+    "message": "© 2026 CVHub. All rights reserved. <a href=\"https://beian.miit.gov.cn/\" target=\"_blank\" rel=\"noopener noreferrer\">粤ICP备2026108570号</a>",
     "description": "The footer copyright"
   }
 }

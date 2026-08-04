@@ -35,8 +35,8 @@
     "message": "捐赠",
     "description": "Navbar item with label Sponsor"
   },
-  "item.label.v4.0.0-beta.13": {
-    "message": "v4.0.0-beta.13",
-    "description": "Navbar item with label v4.0.0-beta.13"
+  "item.label.v4.0.0": {
+    "message": "v4.0.0",
+    "description": "Navbar item with label v4.0.0"
   }
 }

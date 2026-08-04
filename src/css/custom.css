@@ -491,6 +491,12 @@ code { padding: 0.12rem 0.35rem; border: 0; border-radius: 5px; }
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 .footer__copyright { color: rgba(255,255,255,0.35); font-size: 0.72rem; text-align: left; }
+.footer__copyright a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 130ms ease;
+}
+.footer__copyright a:hover { color: rgba(255,255,255,0.72); }
 
 @media (max-width: 1260px) {
   .navbar__items--right .navbar-release-link { display: none; }
