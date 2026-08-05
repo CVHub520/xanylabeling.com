@@ -512,6 +512,11 @@ code { padding: 0.12rem 0.35rem; border: 0; border-radius: 5px; }
 }
 
 @media (max-width: 996px) {
+  .navbar {
+    background: var(--xa-page);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
   .navbar__toggle {
     display: flex;
     flex: 0 0 auto;
