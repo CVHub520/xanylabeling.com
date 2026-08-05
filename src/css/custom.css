@@ -512,6 +512,15 @@ code { padding: 0.12rem 0.35rem; border: 0; border-radius: 5px; }
 }
 
 @media (max-width: 996px) {
+  .navbar__toggle {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    color: var(--xa-text);
+  }
+  .header-github-link { display: none; }
+  .navbar__search-input { width: clamp(5.5rem, 28vw, 8rem); }
   .theme-doc-sidebar-container { border-right: 0 !important; }
   .theme-doc-markdown table { display: block; }
 }
