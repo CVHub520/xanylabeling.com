@@ -211,6 +211,7 @@ export default async function createConfig(): Promise<Config> {
             position: 'right',
           },
           {
+            type: 'custom-githubStars',
             href: `https://github.com/${GITHUB_REPO}`,
             label: starLabel,
             position: 'right',
