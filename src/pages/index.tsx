@@ -146,7 +146,7 @@ const recentFeaturesEn: RecentFeature[] = [
       'Parse layouts, tables, formulas, and text with PaddleOCR, then review every result in place.',
     href: '/workflows#paddle-ocr',
     linkLabel: 'See the document workflow',
-    video: '/videos/document-parsing.mp4',
+    video: 'https://media.xanylabeling.com/videos/document-parsing.mp4',
     poster: '/img/demos/document-parsing-poster.jpg',
   },
   {
@@ -156,7 +156,7 @@ const recentFeaturesEn: RecentFeature[] = [
       'Mark frame-accurate segments, assign classes, review descriptions, and export clips or raw frame sequences.',
     href: '/workflows#video-classifier',
     linkLabel: 'See the video workflow',
-    video: '/videos/video-classifier-home.mp4',
+    video: 'https://media.xanylabeling.com/videos/video-classifier-home.mp4',
     poster: '/img/demos/video-classifier-poster.jpg',
   },
   {
@@ -166,7 +166,7 @@ const recentFeaturesEn: RecentFeature[] = [
       'Work with vision-language models beside the current image and preserve approved responses as training data.',
     href: '/workflows#chatbot',
     linkLabel: 'See the chatbot workflow',
-    video: '/videos/chatbot.mp4',
+    video: 'https://media.xanylabeling.com/videos/chatbot.mp4',
     poster: '/img/demos/chatbot-poster.jpg',
   },
 ];
@@ -178,7 +178,7 @@ const recentFeaturesZh: RecentFeature[] = [
     description: '使用 PaddleOCR 解析布局、表格、公式和文本，并在原位审核每一项结果。',
     href: '/workflows#paddle-ocr',
     linkLabel: '查看文档工作流',
-    video: '/videos/document-parsing.mp4',
+    video: 'https://media.xanylabeling.com/videos/document-parsing.mp4',
     poster: '/img/demos/document-parsing-poster.jpg',
   },
   {
@@ -187,7 +187,7 @@ const recentFeaturesZh: RecentFeature[] = [
     description: '创建逐帧精确的时间片段、分配类别、审核描述，并导出视频片段或原始帧序列。',
     href: '/workflows#video-classifier',
     linkLabel: '查看视频工作流',
-    video: '/videos/video-classifier-home.mp4',
+    video: 'https://media.xanylabeling.com/videos/video-classifier-home.mp4',
     poster: '/img/demos/video-classifier-poster.jpg',
   },
   {
@@ -196,7 +196,7 @@ const recentFeaturesZh: RecentFeature[] = [
     description: '让视觉语言模型基于当前图像进行交互，并将审核通过的回答保存为训练数据。',
     href: '/workflows#chatbot',
     linkLabel: '查看聊天机器人工作流',
-    video: '/videos/chatbot.mp4',
+    video: 'https://media.xanylabeling.com/videos/chatbot.mp4',
     poster: '/img/demos/chatbot-poster.jpg',
   },
 ];
@@ -484,9 +484,9 @@ export default function Home(): ReactNode {
   const interfaceImage = useBaseUrl('/img/interface-v2.webp');
   const samPoster = useBaseUrl('/img/demos/sam3-poster.png');
   const modelFirstPassPoster = useBaseUrl('/img/demos/model-first-pass-poster.jpg');
-  const modelFirstPassVideo = useBaseUrl('/videos/model-first-pass.mp4');
+  const modelFirstPassVideo = 'https://media.xanylabeling.com/videos/model-first-pass.mp4';
   const trainingPoster = useBaseUrl('/img/demos/training-poster.jpg');
-  const trainingVideo = useBaseUrl('/videos/ultralytics-training.mp4');
+  const trainingVideo = 'https://media.xanylabeling.com/videos/ultralytics-training.mp4';
   const {withBaseUrl} = useBaseUrlUtils();
 
   return (
@@ -640,7 +640,7 @@ export default function Home(): ReactNode {
                       preload="metadata"
                       poster={withBaseUrl(feature.poster)}
                       aria-label={`${feature.title} ${copy.demoLabel}`}>
-                      <source src={withBaseUrl(feature.video)} type="video/mp4" />
+                      <source src={feature.video} type="video/mp4" />
                     </video>
                   </div>
                   <div className={styles.recentCopy}>
