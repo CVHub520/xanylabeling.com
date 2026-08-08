@@ -169,10 +169,9 @@ jobs:
       - name: Verify live website
         run: |
           set -euo pipefail
-          stamp=$(date +%s)
-          curl -fsSI --retry 5 --retry-all-errors \
-            "https://xanylabeling.com/?verify=${stamp}"
-          curl -fsSI --retry 5 --retry-all-errors \
-            "https://xanylabeling.com/zh-Hans/?verify=${stamp}"
-          curl -fsSI --retry 5 --retry-all-errors \
-            "https://xanylabeling.com/docs/x-anylabeling/get_started?verify=${stamp}"
+          curl -fsSL --retry 5 --retry-all-errors --output /dev/null \
+            "https://xanylabeling.com/"
+          curl -fsSL --retry 5 --retry-all-errors --output /dev/null \
+            "https://xanylabeling.com/zh-Hans/"
+          curl -fsSL --retry 5 --retry-all-errors --output /dev/null \
+            "https://xanylabeling.com/docs/x-anylabeling/get_started/"
