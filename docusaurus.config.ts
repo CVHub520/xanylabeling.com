@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 import remarkGitHubAlerts from './plugins/remarkGitHubAlerts';
 
 const GITHUB_REPO = 'CVHub520/X-AnyLabeling';
-const DEFAULT_RELEASE_LABEL = 'v4.0.0';
+const DEFAULT_RELEASE_LABEL = 'v4.0.1';
 const DEFAULT_STAR_LABEL = '10k+';
 
 function escapeHtml(value: string): string {
