@@ -4,7 +4,7 @@
     "x-anylabeling": {
       "repository": "CVHub520/X-AnyLabeling",
       "ref": "main",
-      "sha": "a6425113ea923d84c4cdc74a7618a6c01e3a52d4"
+      "sha": "1b6750dd89b7f4d860af6ac0dd84a224189eb510"
     },
     "server": {
       "repository": "CVHub520/X-AnyLabeling-Server",
