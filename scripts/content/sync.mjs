@@ -34,6 +34,53 @@ const MEDIA_EXTENSIONS = new Set([
   '.webm',
   '.webp',
 ]);
+const DOC_MEDIA_BASE =
+  'https://media.xanylabeling.com/videos/docs/x-anylabeling';
+const OPTIMIZED_DOC_MEDIA = {
+  'assets/resources/annotation_opacity.gif': {
+    video: 'annotation_opacity-202b56bf0dc8.mp4',
+    poster: 'annotation_opacity-poster-9e98b203edfb.webp',
+  },
+  'assets/resources/brush_polygon.gif': {
+    video: 'brush_polygon-05189ac8ee9b.mp4',
+    poster: 'brush_polygon-poster-1602d0021972.webp',
+  },
+  'assets/resources/canvas_shape_selection.gif': {
+    video: 'canvas_shape_selection-def7e6c9fbe4.mp4',
+    poster: 'canvas_shape_selection-poster-94bfa26e70c4.webp',
+  },
+  'assets/resources/compare_view.gif': {
+    video: 'compare_view-ff9e115993e3.mp4',
+    poster: 'compare_view-poster-1d70c1ea90e3.webp',
+  },
+  'assets/resources/image_brightness.gif': {
+    video: 'image_brightness-612cbcb9e3e8.mp4',
+    poster: 'image_brightness-poster-264efadbcf76.webp',
+  },
+  'assets/resources/image_contrast.gif': {
+    video: 'image_contrast-99fc50f5f2af.mp4',
+    poster: 'image_contrast-poster-cb138e2b6ace.webp',
+  },
+  'assets/resources/loop_shapes.gif': {
+    video: 'loop_shapes-773af63e5d54.mp4',
+    poster: 'loop_shapes-poster-0dff8691b376.webp',
+  },
+  'assets/resources/magic_wand.gif': {
+    video: 'magic_wand-628b6ebb8588.mp4',
+    poster: 'magic_wand-poster-98a520fb3501.webp',
+  },
+  'assets/resources/supported_languages.png': {
+    image: 'supported_languages-8b6f053d41ec.webp',
+  },
+  'assets/resources/zoom_shapes.gif': {
+    video: 'zoom_shapes-0dc8b90e6d53.mp4',
+    poster: 'zoom_shapes-poster-5b6c51086a85.webp',
+  },
+  'assets/terminal_launch.gif': {
+    video: 'terminal_launch-c408e29bf757.mp4',
+    poster: 'terminal_launch-poster-e9e103c34304.webp',
+  },
+};
 const DOC_TITLES = {
   en: {
     chatbot: 'Chatbot',
@@ -318,6 +365,14 @@ function cssStyleToJsx(style) {
   return `style={{${properties.join(', ')}}}`;
 }
 
+function escapeHtmlAttribute(value) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
 function transformOutsideFences(content, transform) {
   let fence = null;
   return content
@@ -390,6 +445,50 @@ function createRewriter({product, source, manifest, locale, sourceFile, outputFi
     ensureDirectory(path.dirname(outputPath));
     copyFileSync(assetPath, outputPath);
     return `/generated/${product.id}/${repositoryPath}`;
+  }
+
+  function optimizedDocMedia(rawTarget) {
+    if (product.id !== 'x-anylabeling') return null;
+    const target = rawTarget.startsWith('<') && rawTarget.endsWith('>')
+      ? rawTarget.slice(1, -1)
+      : rawTarget;
+    if (!target || /^(?:data|https?):/i.test(target)) return null;
+    const pathname = decodeURIComponent(target.split(/[?#]/, 1)[0]);
+    const resolved = path.resolve(path.dirname(sourceFile), pathname);
+    const repositoryPath = relativeTo(source.root, resolved);
+    return OPTIMIZED_DOC_MEDIA[repositoryPath] ?? null;
+  }
+
+  function optimizedVideo(media, label) {
+    const accessibleLabel = escapeHtmlAttribute(
+      label || media.video.replace(/-[0-9a-f]{12}\.mp4$/, '').replace(/_/g, ' '),
+    );
+    return `<video src="${DOC_MEDIA_BASE}/${media.video}" poster="${DOC_MEDIA_BASE}/${media.poster}" width="100%" controls loop muted playsinline preload="none" aria-label="${accessibleLabel}"></video>`;
+  }
+
+  function rewriteOptimizedMedia(line) {
+    let output = line.replace(/<img\b([^>]*)>/gi, (match, attributes) => {
+      const sourceMatch = attributes.match(/\bsrc=(['"])([^'"]+)\1/i);
+      if (!sourceMatch) return match;
+      const media = optimizedDocMedia(sourceMatch[2]);
+      if (!media) return match;
+      if (media.image) {
+        return match.replace(
+          sourceMatch[0],
+          `src="${DOC_MEDIA_BASE}/${media.image}"`,
+        );
+      }
+      const altMatch = attributes.match(/\balt=(['"])([^'"]*)\1/i);
+      return optimizedVideo(media, altMatch?.[2] ?? '');
+    });
+    output = output.replace(
+      /!\[([^\]]*)\]\((<[^>]+>|[^\s)]+)(?:\s+['"][^'"]*['"])?\)/g,
+      (match, alt, target) => {
+        const media = optimizedDocMedia(target);
+        return media?.video ? optimizedVideo(media, alt) : match;
+      },
+    );
+    return output;
   }
 
   function rewriteTarget(rawTarget, asset = false) {
@@ -470,7 +569,8 @@ function createRewriter({product, source, manifest, locale, sourceFile, outputFi
         `<summary${attributes}>${summary.trim()}</summary>\n\n${body.trim()}`,
     );
     const rewritten = transformOutsideFences(normalized, (line) => {
-      let output = line.replace(
+      let output = rewriteOptimizedMedia(line);
+      output = output.replace(
         /(!?\[[^\]]*\]\()(<[^>]+>|[^\s)]+)([^)]*\))/g,
         (match, prefix, target, suffix) =>
           `${prefix}${rewriteTarget(target, prefix.startsWith('!'))}${suffix}`,
@@ -492,6 +592,8 @@ function createRewriter({product, source, manifest, locale, sourceFile, outputFi
         .replace(/\bclass=/gi, 'className=')
         .replace(/<\/br\s*>/gi, '<br />')
         .replace(/<br\s*\/?>/gi, '<br />')
+        .replace(/<img\b(?![^>]*\bloading=)/gi, '<img loading="lazy"')
+        .replace(/<img\b(?![^>]*\bdecoding=)/gi, '<img decoding="async"')
         .replace(/<img\b([^>]*?)(?<!\/)\s*>/gi, '<img$1 />');
       return output;
     });

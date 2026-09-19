@@ -66,7 +66,16 @@ const socials: Social[] = [
 
 function SocialIcon({icon}: {icon: string}) {
   const src = useBaseUrl(`/img/social/icons/${icon}.svg`);
-  return <img className={styles.icon} src={src} alt="" aria-hidden="true" />;
+  return (
+    <img
+      className={styles.icon}
+      src={src}
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+      decoding="async"
+    />
+  );
 }
 
 function QrItem({social}: {social: QrSocial}) {
@@ -88,6 +97,7 @@ function QrItem({social}: {social: QrSocial}) {
           src={qrSrc}
           alt={`${social.name} QR code`}
           loading="lazy"
+          decoding="async"
         />
         <span className={styles.caption}>
           Follow X-AnyLabeling on {social.name}.
