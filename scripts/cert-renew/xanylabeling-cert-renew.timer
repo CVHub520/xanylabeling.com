@@ -1,0 +1,11 @@
+[Unit]
+Description=Check X-AnyLabeling certificates daily
+
+[Timer]
+OnCalendar=*-*-* 03:00:00 Asia/Shanghai
+RandomizedDelaySec=15min
+Persistent=true
+Unit=xanylabeling-cert-renew.service
+
+[Install]
+WantedBy=timers.target

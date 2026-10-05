@@ -1,0 +1,18 @@
+[Unit]
+Description=Renew and deploy X-AnyLabeling OSS/CDN certificates
+Wants=network-online.target
+After=network-online.target
+OnFailure=xanylabeling-cert-renew-failure.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/xanylabeling-cert-renew
+ExecStart=/opt/xanylabeling-cert-renew/run.sh
+UMask=0077
+TimeoutStartSec=30min
+PrivateTmp=true
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/etc/letsencrypt /var/lib/letsencrypt /var/log/letsencrypt /var/lib/xanylabeling-cert-renew
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX

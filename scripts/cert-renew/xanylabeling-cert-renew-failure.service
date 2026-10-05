@@ -1,0 +1,7 @@
+[Unit]
+Description=Record X-AnyLabeling certificate automation failure
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'date -Is > /var/lib/xanylabeling-cert-renew/FAILED-TIMER; /usr/bin/logger -p daemon.err "X-AnyLabeling certificate renewal failed; inspect journalctl -u xanylabeling-cert-renew.service"'
+UMask=0077

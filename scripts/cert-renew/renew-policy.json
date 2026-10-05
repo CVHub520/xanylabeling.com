@@ -1,0 +1,25 @@
+{
+  "Version": "1",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["alidns:DescribeDomainRecords", "alidns:AddDomainRecord", "alidns:DeleteDomainRecord"],
+      "Resource": "acs:alidns:*:1785553318520748:domain/xanylabeling.com"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["oss:ListCname", "oss:PutCname"],
+      "Resource": "acs:oss:*:*:xanylabeling-web-prod"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["cdn:DescribeDomainCertificateInfo", "cdn:SetCdnDomainSSLCertificate"],
+      "Resource": "acs:cdn:*:1785553318520748:domain/media.xanylabeling.com"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["yundun-cert:UploadUserCertificate", "yundun-cert:DescribeSSLCertificatePrivateKey", "yundun-cert:DescribeSSLCertificatePublicKeyDetail", "yundun-cert:CreateSSLCertificate"],
+      "Resource": "*"
+    }
+  ]
+}
