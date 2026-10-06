@@ -22,6 +22,7 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       link: {type: 'generated-index', slug: '/workflow-guides'},
       items: [
+        'point_cloud',
         'image_classifier',
         'paddle_ocr',
         'video_classifier',

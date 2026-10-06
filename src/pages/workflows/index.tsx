@@ -20,6 +20,16 @@ type WorkflowPresentation = {
 };
 
 const presentationsEn: Record<WorkflowId, WorkflowPresentation> = {
+  'point-cloud': {
+    eyebrow: '3D point cloud annotation',
+    title: 'Label objects and regions in 3D.',
+    description:
+      'Annotate 3D bounding boxes, semantic classes, and instances in point clouds, with linked camera views to help review the scene.',
+    outcomes: ['3D object detection', 'Semantic and instance segmentation', 'Linked camera views'],
+    image: '/img/workflow-covers/point-cloud.webp',
+    imageAlt: '',
+    tone: 'sage',
+  },
   'image-classifier': {
     eyebrow: 'Image classifier',
     title: 'Label the image, the object, or both.',
@@ -73,6 +83,15 @@ const presentationsEn: Record<WorkflowId, WorkflowPresentation> = {
 };
 
 const presentationsZh: Record<WorkflowId, WorkflowPresentation> = {
+  'point-cloud': {
+    eyebrow: '3D 点云标注',
+    title: '在三维空间中标注目标与区域。',
+    description: '在点云中标注 3D 检测框、语义类别和实例，结合关联相机视图审核场景。',
+    outcomes: ['3D 目标检测', '语义与实例分割', '关联相机视图'],
+    image: '/img/workflow-covers/point-cloud.webp',
+    imageAlt: '',
+    tone: 'sage',
+  },
   'image-classifier': {
     eyebrow: '图像分类器',
     title: '标注整张图像、局部目标，或两者兼顾。',
@@ -123,9 +142,9 @@ const presentationsZh: Record<WorkflowId, WorkflowPresentation> = {
 const workflowsCopy = {
   en: {
     title: 'Workflows',
-    description: 'Purpose-built X-AnyLabeling workflows for image, document, video, and multimodal annotation.',
+    description: 'Purpose-built X-AnyLabeling workflows for point cloud, image, document, video, and multimodal annotation.',
     heading: 'Choose the right workflow for every task',
-    lede: 'Annotate, review, and export image, document, video, and multimodal data in one workspace, with model assistance when you need it.',
+    lede: 'Annotate, review, and export point cloud, image, document, video, and multimodal data in one workspace, with model assistance when you need it.',
     start: 'Browse workflow docs',
     browse: 'Explore all workflows',
     ariaLabel: 'X-AnyLabeling workflows',
@@ -133,9 +152,9 @@ const workflowsCopy = {
   },
   zh: {
     title: '工作流',
-    description: '面向图像、文档、视频和多模态标注的 X-AnyLabeling 专用工作流。',
+    description: '面向点云、图像、文档、视频和多模态标注的 X-AnyLabeling 专用工作流。',
     heading: '为不同任务选择合适的工作流',
-    lede: '在同一工作区完成图像、文档、视频与多模态数据的标注、审核和导出，并按需接入模型辅助。',
+    lede: '在同一工作区完成点云、图像、文档、视频与多模态数据的标注、审核和导出，并按需接入模型辅助。',
     start: '浏览工作流文档',
     browse: '查看全部工作流',
     ariaLabel: 'X-AnyLabeling 工作流',
@@ -195,8 +214,8 @@ export default function Workflows(): ReactNode {
           <Heading as="h1">{copy.heading}</Heading>
           <p>{copy.lede}</p>
           <div className={styles.heroLinks}>
-            <Link to="/docs/x-anylabeling/image_classifier">{copy.start} <ArrowIcon /></Link>
-            <Link to="#image-classifier">{copy.browse}</Link>
+            <Link to={content.workflows[0].href}>{copy.start} <ArrowIcon /></Link>
+            <Link to={`#${content.workflows[0].id}`}>{copy.browse}</Link>
           </div>
         </header>
 
