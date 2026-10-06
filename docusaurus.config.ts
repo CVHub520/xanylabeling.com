@@ -84,6 +84,7 @@ export default async function createConfig(): Promise<Config> {
 
     url: 'https://xanylabeling.com',
     baseUrl: '/',
+    clientModules: ['./src/clientModules/baiduAnalytics.ts'],
     organizationName: 'CVHub520',
     projectName: 'X-AnyLabeling',
 
