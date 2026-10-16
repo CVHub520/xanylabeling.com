@@ -45,33 +45,53 @@ async function fetchStarLabel(): Promise<string> {
   }
 }
 
-async function fetchReleaseLabel(): Promise<string> {
+async function fetchReleaseInfo(): Promise<{
+  label: string;
+  installers: Array<{label: string; url: string}>;
+}> {
+  const fallback = {label: DEFAULT_RELEASE_LABEL, installers: []};
   try {
     const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/releases`, {
       headers: githubHeaders(),
     });
-    if (!res.ok) return DEFAULT_RELEASE_LABEL;
+    if (!res.ok) return fallback;
     const releases = (await res.json()) as Array<{
       draft?: unknown;
+      prerelease?: unknown;
       tag_name?: unknown;
+      assets?: Array<{name: string; browser_download_url: string}>;
     }>;
     const release = releases.find(
-      (item) => item.draft !== true && typeof item.tag_name === 'string',
+      (item) => item.draft !== true && item.prerelease !== true && typeof item.tag_name === 'string',
     );
     if (!release || typeof release.tag_name !== 'string') {
-      return DEFAULT_RELEASE_LABEL;
+      return fallback;
     }
-    return release.tag_name;
+    const assets = release.assets ?? [];
+    const installers = assets.some((asset) => asset.name === 'update-manifest.json')
+      ? assets.flatMap((asset) => {
+          const windows = asset.name.match(/-Windows-(CPU|CUDA11|CUDA12|CUDA13)-Setup\.exe$/);
+          const linux = asset.name.match(/-Linux-(CPU|CUDA11|CUDA12|CUDA13)-Portable\.tar\.gz$/);
+          const mac = asset.name.match(/-macOS-(arm64|x86_64|universal2)(?:-unsigned)?\.dmg$/);
+          const label = windows ? `Windows x64 · ${windows[1]}`
+            : linux ? `Linux x64 · ${linux[1]}`
+            : mac ? `macOS · ${mac[1] === 'arm64' ? 'Apple silicon' : mac[1] === 'x86_64' ? 'Intel' : 'Universal'}`
+            : null;
+          return label ? [{label, url: asset.browser_download_url}] : [];
+        }).sort((a, b) => a.label.localeCompare(b.label))
+      : [];
+    return {label: release.tag_name, installers};
   } catch {
-    return DEFAULT_RELEASE_LABEL;
+    return fallback;
   }
 }
 
 export default async function createConfig(): Promise<Config> {
-  const [releaseLabel, starLabel] = await Promise.all([
-    fetchReleaseLabel(),
+  const [releaseInfo, starLabel] = await Promise.all([
+    fetchReleaseInfo(),
     fetchStarLabel(),
   ]);
+  const releaseLabel = releaseInfo.label;
 
   const config: Config = {
     title: 'X-AnyLabeling',
@@ -84,6 +104,7 @@ export default async function createConfig(): Promise<Config> {
 
     url: 'https://xanylabeling.com',
     baseUrl: '/',
+    customFields: {releaseLabel, releaseInstallers: releaseInfo.installers},
     clientModules: ['./src/clientModules/baiduAnalytics.ts'],
     organizationName: 'CVHub520',
     projectName: 'X-AnyLabeling',

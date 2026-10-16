@@ -1,4 +1,5 @@
-import type {ReactNode} from 'react';
+import {useState, type ReactNode} from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
 import Layout from '@theme/Layout';
@@ -34,6 +35,11 @@ const downloadCopy = {
         'Get the latest public release from GitHub. No account, payment, or special access is required.',
       action: 'Download free',
       note: 'No account · No payment · No restrictions',
+      installerTitle: 'Install X-AnyLabeling on your computer.',
+      installerText: 'Choose your system and build. After installation, new versions can be downloaded and installed from the app.',
+      select: 'System and build',
+      installerAction: 'Download package',
+      allReleases: 'All releases and portable builds',
     },
   },
   zh: {
@@ -59,6 +65,11 @@ const downloadCopy = {
         '从 GitHub 获取最新公开版本，无需注册账户、无需付款，也不存在特殊访问限制。',
       action: '免费下载',
       note: '无需账户 · 无需付款 · 无功能限制',
+      installerTitle: '在你的电脑上安装 X-AnyLabeling。',
+      installerText: '选择系统和版本。安装后，可在应用内下载更新并重启使用新版。',
+      select: '系统和版本',
+      installerAction: '下载安装包',
+      allReleases: '全部版本与便携版',
     },
   },
 } as const;
@@ -98,6 +109,10 @@ function DownloadIcon(): ReactNode {
 
 export default function Download(): ReactNode {
   const copy = useLocalizedContent(downloadCopy.en, downloadCopy.zh);
+  const {siteConfig} = useDocusaurusContext();
+  const installers = (siteConfig.customFields?.releaseInstallers ?? []) as Array<{label: string; url: string}>;
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const selected = installers[selectedIndex];
 
   return (
     <Layout title={copy.title} description={copy.description}>
@@ -133,13 +148,24 @@ export default function Download(): ReactNode {
               <i><DownloadIcon /></i>
             </div>
             <div className={styles.cardCopy}>
-              <Heading as="h2">{copy.free.title}</Heading>
-              <p>{copy.free.text}</p>
+              <Heading as="h2">{selected ? copy.free.installerTitle : copy.free.title}</Heading>
+              <p>{selected ? copy.free.installerText : copy.free.text}</p>
             </div>
-            <Link className={styles.downloadButton} to={GITHUB_RELEASES}>
-              {copy.free.action} <ExternalIcon />
+            {selected && (
+              <label className={styles.packageSelect}>
+                <span>{copy.free.select} · {String(siteConfig.customFields?.releaseLabel ?? '')}</span>
+                <select value={selectedIndex} onChange={(event) => setSelectedIndex(Number(event.target.value))}>
+                  {installers.map((installer, index) => (
+                    <option key={installer.url} value={index}>{installer.label}</option>
+                  ))}
+                </select>
+              </label>
+            )}
+            <Link className={styles.downloadButton} to={selected?.url ?? GITHUB_RELEASES}>
+              {selected ? copy.free.installerAction : copy.free.action} <ExternalIcon />
             </Link>
             <p className={styles.cardNote}>{copy.free.note}</p>
+            {selected && <Link className={styles.releaseLink} to={GITHUB_RELEASES}>{copy.free.allReleases}</Link>}
           </article>
         </section>
 
