@@ -41,6 +41,8 @@ jobs:
     steps:
       - name: Check out website source
         uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.repository.default_branch }}
 
       - name: Resolve content update
         id: source
