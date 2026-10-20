@@ -22,6 +22,7 @@ const taskCoverById: Record<string, string> = {
   'estimation/depth_estimation': '/img/task-covers/depth-estimation.webp',
   'estimation/face_estimation': '/img/task-covers/face-estimation.webp',
   'estimation/pose_estimation': '/img/task-covers/pose-estimation.webp',
+  'grounding/groundingpi': '/img/task-covers/groundingpi.webp',
   'grounding/locateanything': '/img/task-covers/locate-anything-grounding.webp',
   'grounding/sam3': '/img/task-covers/sam3-concept-segmentation.webp',
   'grounding/yoloe': '/img/task-covers/yoloe-universal-detection.webp',
