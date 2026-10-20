@@ -931,7 +931,9 @@ function generateExamples(product, source, manifest) {
     }
     items.push({
       id: slug,
-      category: titleCase(slug.split('/')[0]),
+      category: slug.split('/')[0] === 'vision_foundation'
+        ? 'Vision Foundation Models'
+        : titleCase(slug.split('/')[0]),
       title,
       description,
       cover,

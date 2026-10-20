@@ -326,11 +326,11 @@ X-AnyLabeling 的处理方式，是把这些任务映射到同一套数据原语
 | 📄 **光学字符识别** | PP-OCRv4, PP-OCRv5, PP-OCRv6 |
 | 🧾 **综合版面分析** | PP-DocLayoutV3 |
 | 📑 **文档解析** | PaddleOCR-VL, PaddleOCR-VL-1.6 |
-| 🗣️ **视觉基础模型** | Rex-Omni, Florence2 |
+| 🗣️ **视觉基础模型** | Rex-Omni, Florence2, LocateAnything |
 | 👁️ **视觉语言模型** | Qwen3-VL, Gemini, ChatGPT, GLM |
 | 🛣️ **车道线检测** | CLRNet |
 | 🔢 **目标计数** | CountGD, GeCO, GeCo2 |
-| 📍 **视觉定位** | Grounding DINO, YOLO-World, YOLOE, SAM 3, LocateAnything |
+| 📍 **视觉定位** | Grounding DINO, YOLO-World, YOLOE, SAM 3 |
 
 这些模型共同支撑了 X-AnyLabeling 从传统视觉任务到多模态任务的完整能力覆盖。
 

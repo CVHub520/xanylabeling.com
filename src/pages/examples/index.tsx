@@ -22,7 +22,9 @@ const taskCoverById: Record<string, string> = {
   'estimation/depth_estimation': '/img/task-covers/depth-estimation.webp',
   'estimation/face_estimation': '/img/task-covers/face-estimation.webp',
   'estimation/pose_estimation': '/img/task-covers/pose-estimation.webp',
+  'vision_foundation/groundingpi': '/img/task-covers/groundingpi.webp',
   'grounding/groundingpi': '/img/task-covers/groundingpi.webp',
+  'vision_foundation/locateanything': '/img/task-covers/locate-anything-grounding.webp',
   'grounding/locateanything': '/img/task-covers/locate-anything-grounding.webp',
   'grounding/sam3': '/img/task-covers/sam3-concept-segmentation.webp',
   'grounding/yoloe': '/img/task-covers/yoloe-universal-detection.webp',
@@ -36,12 +38,15 @@ const taskCoverById: Record<string, string> = {
   'optical_character_recognition/text_recognition': '/img/task-covers/text-recognition.webp',
   'segmentation': '/img/task-covers/image-segmentation.webp',
   'training/ultralytics': '/img/task-covers/training.webp',
+  'vision_foundation/florence2': '/img/task-covers/florence2.webp',
   'vision_language/florence2': '/img/task-covers/florence2.webp',
+  'vision_foundation/rexomni': '/img/task-covers/rex-omni.webp',
   'vision_language/rexomni': '/img/task-covers/rex-omni.webp',
 };
 
 const taskTitleById: Record<string, string> = {
   'detection/obb': 'Oriented Object Detection',
+  'vision_foundation/locateanything': 'LocateAnything',
   'grounding/locateanything': 'LocateAnything',
   'grounding/sam3': 'SAM 3',
   'grounding/yoloe': 'YOLOE',
@@ -88,7 +93,8 @@ const examplesCopy = {
       'Optical Character Recognition': '光学字符识别',
       Segmentation: '分割',
       Training: '训练',
-      'Vision Language': '视觉语言',
+      'Vision Foundation Models': '视觉基础模型',
+      'Vision Language': '视觉基础模型',
     },
   },
 };
