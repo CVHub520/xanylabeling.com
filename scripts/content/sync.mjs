@@ -526,7 +526,14 @@ function createRewriter({product, source, manifest, locale, sourceFile, outputFi
         const relativeSource = path.relative(entry.root, sourceFile);
         const sourceIsInLocale =
           !relativeSource.startsWith('..') && !path.isAbsolute(relativeSource);
-        if (entry.locale === locale && sourceIsInLocale) {
+        const usesLocaleFallback =
+          entry.locale === DEFAULT_LOCALE &&
+          sourceIsInLocale &&
+          localeEntries.some(
+            (other) => other.locale !== entry.locale &&
+              !existsSync(path.join(other.root, relativeSource)),
+          );
+        if (entry.locale === locale && sourceIsInLocale && !usesLocaleFallback) {
           const generatedTarget = path.resolve(
             path.dirname(outputFile),
             path.relative(path.dirname(sourceFile), resolved),
@@ -538,7 +545,7 @@ function createRewriter({product, source, manifest, locale, sourceFile, outputFi
         }
         const docPath = relativeDocument.replace(/\.md$/, '').split(path.sep).join('/');
         const route = `${product.docs_route ?? `/docs/${product.id}`}/${docPath}${suffix}`;
-        if (entry.locale === locale) return route;
+        if (entry.locale === locale && !usesLocaleFallback) return route;
         return `pathname://${LOCALE_PREFIXES[entry.locale] ?? ''}${route}`;
       }
     }
