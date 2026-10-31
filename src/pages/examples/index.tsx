@@ -35,12 +35,16 @@ const taskCoverById: Record<string, string> = {
   'optical_character_recognition/document_layout_analysis': '/img/task-covers/document-layout.webp',
   'optical_character_recognition/key_information_extraction': '/img/task-covers/key-information-extraction.webp',
   'optical_character_recognition/multi_task': '/img/task-covers/paddleocr-vl-multitask.webp',
+  'optical_character_recognition/paddleocr_vl': '/img/task-covers/paddleocr-vl-multitask.webp',
   'optical_character_recognition/text_recognition': '/img/task-covers/text-recognition.webp',
+  'optical_character_recognition/unlimited_ocr_2': '/img/task-covers/unlimited-ocr-2.webp',
   'segmentation': '/img/task-covers/image-segmentation.webp',
   'training/ultralytics': '/img/task-covers/training.webp',
   'vision_foundation/florence2': '/img/task-covers/florence2.webp',
   'vision_language/florence2': '/img/task-covers/florence2.webp',
   'vision_foundation/rexomni': '/img/task-covers/rex-omni.webp',
+  'vision_foundation/wevisone_vl': '/img/task-covers/wevisone-vl.webp',
+  'vision_foundation/xiaomi_lens': '/img/task-covers/xiaomi-lens.webp',
   'vision_language/rexomni': '/img/task-covers/rex-omni.webp',
 };
 
