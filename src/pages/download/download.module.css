@@ -1,307 +1,66 @@
 .page {
-  width: min(1200px, calc(100% - 2rem));
-  margin: 0 auto;
-  padding: clamp(5rem, 9vw, 8rem) 0 clamp(6rem, 10vw, 9rem);
-}
-
-.hero {
-  max-width: 900px;
-  margin-bottom: clamp(3.5rem, 6vw, 5rem);
-}
-
-.eyebrow {
-  margin: 0 0 1rem;
-  color: var(--xa-brand);
-  font-size: 0.72rem;
-  font-weight: 720;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-}
-
-.title {
-  margin: 0;
-  color: var(--xa-text);
-  font-size: clamp(3.5rem, 7vw, 6.5rem);
-  font-weight: 740;
-  letter-spacing: -0.067em;
-  line-height: 0.9;
-  text-wrap: balance;
-}
-
-.title span {
-  display: block;
-  color: var(--xa-text-tertiary);
-}
-
-:global(html[lang='zh-Hans']) .title {
-  letter-spacing: -0.035em;
-  line-height: 1.08;
-}
-
-.lede {
-  max-width: 700px;
-  margin: 1.7rem 0 0;
-  color: var(--xa-text-secondary);
-  font-size: clamp(1rem, 1.7vw, 1.18rem);
-  line-height: 1.7;
-}
-
-.choiceGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.choiceCard {
   display: flex;
-  min-height: 34rem;
-  flex-direction: column;
-  overflow: hidden;
-  padding: clamp(2rem, 4vw, 3rem);
+  min-height: min(720px, calc(100vh - 8rem));
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.25rem 6rem;
+}
+
+.downloadCard {
+  width: min(100%, 520px);
+  padding: clamp(1.75rem, 5vw, 3rem);
   border: 1px solid var(--xa-border);
-  border-radius: 2rem;
+  border-radius: 1.75rem;
+  background: radial-gradient(circle at 100% 0%, var(--xa-brand-soft), transparent 42%), var(--xa-surface);
   box-shadow: var(--xa-shadow-sm);
 }
 
-.supportCard {
-  background:
-    radial-gradient(circle at 88% 10%, rgba(255, 255, 255, 0.13), transparent 30%),
-    radial-gradient(circle at 4% 96%, rgba(54, 120, 111, 0.25), transparent 38%),
-    #a53f21;
-  color: white;
-}
+.brandRow { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2.5rem; }
+.logo { width: 54px; height: 54px; object-fit: contain; }
+.version { padding: 0.4rem 0.75rem; border: 1px solid var(--xa-border); border-radius: 999px; color: var(--xa-text-secondary); font-size: 0.75rem; font-weight: 700; }
+.downloadCard h1 { margin: 0; color: var(--xa-text); font-size: clamp(1.9rem, 5vw, 2.7rem); font-weight: 740; letter-spacing: -0.045em; line-height: 1.15; }
+.subtitle { margin: 0.75rem 0 2rem; color: var(--xa-text-secondary); font-size: 0.95rem; }
+.packageSelect { display: grid; gap: 1.4rem; }
+.optionGroup { min-width: 0; margin: 0; padding: 0; border: 0; }
+.optionGroup legend { margin-bottom: 0.65rem; color: var(--xa-text-secondary); font-size: 0.8rem; font-weight: 650; }
+.options { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.option { position: relative; flex: 1 1 auto; margin: 0; cursor: pointer; }
+.option input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.option span { display: flex; min-height: 2.65rem; align-items: center; justify-content: center; padding: 0.55rem 0.8rem; border: 1px solid var(--xa-border); border-radius: 0.65rem; background: var(--xa-surface); color: var(--xa-text-secondary); font-size: 0.8rem; font-weight: 600; transition: background 150ms ease, border-color 150ms ease, color 150ms ease; }
+.option:hover span { background: var(--xa-surface-2); color: var(--xa-text); }
+.option input:checked + span { border-color: var(--xa-text); background: var(--xa-text); color: var(--xa-page); }
+.option input:focus-visible + span { outline: 2px solid var(--xa-brand); outline-offset: 3px; }
+.downloadButton, .dialogDownload { display: flex; align-items: center; justify-content: center; gap: 0.6rem; min-height: 3.25rem; padding: 0.8rem 1.2rem; border: 0; border-radius: 0.8rem; background: var(--xa-text); color: var(--xa-page) !important; font: inherit; font-size: 0.85rem; font-weight: 700; text-decoration: none !important; cursor: pointer; }
+.downloadButton { width: 100%; margin-top: 1.75rem; }
+.downloadButton svg, .dialogDownload svg { width: 1.1rem; height: 1.1rem; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 
-.freeCard {
-  background:
-    radial-gradient(circle at 92% 10%, var(--xa-brand-soft), transparent 31%),
-    var(--xa-surface);
-  color: var(--xa-text);
-}
-
-.cardTop {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.cardTop > span {
-  display: inline-flex;
-  min-height: 1.9rem;
-  align-items: center;
-  padding: 0.35rem 0.65rem;
-  border-radius: 999px;
-  font-size: 0.65rem;
-  font-weight: 720;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.supportCard .cardTop > span {
-  background: rgba(255, 255, 255, 0.13);
-  color: rgba(255, 255, 255, 0.82);
-}
-
-.freeCard .cardTop > span {
-  background: var(--xa-brand-soft);
-  color: var(--xa-brand);
-}
-
-.cardTop i {
-  display: flex;
-  width: 3rem;
-  height: 3rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-}
-
-.supportCard .cardTop i {
-  background: rgba(255, 255, 255, 0.12);
-  color: white;
-}
-
-.freeCard .cardTop i {
-  background: var(--xa-surface-2);
-  color: var(--xa-brand);
-}
-
-.cardTop svg {
-  width: 1.45rem;
-  height: 1.45rem;
-  stroke: currentColor;
-  stroke-width: 1.55;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.cardCopy {
-  margin-top: auto;
-  padding-top: 5rem;
-}
-
-.cardCopy h2 {
-  max-width: 550px;
-  margin: 0;
-  font-size: clamp(2.2rem, 4vw, 3.5rem);
-  font-weight: 720;
-  letter-spacing: -0.055em;
-  line-height: 1;
-  text-wrap: balance;
-}
-
-:global(html[lang='zh-Hans']) .cardCopy h2 {
-  letter-spacing: -0.03em;
-  line-height: 1.12;
-}
-
-.supportCard .cardCopy h2 {
-  color: white;
-}
-
-.freeCard .cardCopy h2 {
-  color: var(--xa-text);
-}
-
-.cardCopy p {
-  max-width: 53ch;
-  margin: 1.2rem 0 0;
-  font-size: 0.88rem;
-  line-height: 1.7;
-}
-
-.supportCard .cardCopy p {
-  color: rgba(255, 255, 255, 0.66);
-}
-
-.freeCard .cardCopy p {
-  color: var(--xa-text-secondary);
-}
-
-.supportButton,
-.downloadButton {
-  display: inline-flex;
-  width: 100%;
-  min-height: 3.25rem;
-  align-items: center;
-  justify-content: center;
-  gap: 0.55rem;
-  margin-top: 2rem;
-  padding: 0.8rem 1.2rem;
-  border-radius: 0.9rem;
-  font-size: 0.84rem;
-  font-weight: 700;
-  text-decoration: none !important;
-  transition: transform 150ms ease, box-shadow 150ms ease;
-}
-
-.supportButton {
-  background: white;
-  box-shadow: 0 12px 30px rgba(61, 18, 7, 0.22);
-  color: #1b1c18 !important;
-}
-
-.downloadButton {
-  background: var(--xa-text);
-  box-shadow: 0 12px 30px rgba(27, 28, 24, 0.14);
-  color: var(--xa-page) !important;
-}
-
-.supportButton:hover,
-.downloadButton:hover {
-  transform: translateY(-1px);
-}
-
-.supportButton:active,
-.downloadButton:active {
-  transform: scale(0.985);
-}
-
-.supportButton svg,
-.downloadButton svg {
-  width: 1rem;
-  height: 1rem;
-  stroke: currentColor;
-  stroke-width: 1.45;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.cardNote {
-  margin: 1rem 0 0;
-  font-size: 0.68rem;
-  font-weight: 620;
-  letter-spacing: 0.02em;
-  text-align: center;
-}
-
-.packageSelect {
-  display: grid;
-  gap: 0.6rem;
-  margin-top: 1.5rem;
-  color: var(--xa-text-secondary);
-  font-size: 0.8rem;
-}
-
-.packageSelect select {
-  width: 100%;
-  min-height: 3rem;
-  padding: 0.65rem 0.8rem;
-  border: 1px solid var(--xa-border);
-  border-radius: 0.6rem;
-  background: var(--xa-surface);
-  color: var(--xa-text);
-  font: inherit;
-}
-
-.releaseLink {
-  margin-top: 1rem;
-  font-size: 0.8rem;
-  text-align: center;
-}
-
-.supportCard .cardNote {
-  color: rgba(255, 255, 255, 0.45);
-}
-
-.freeCard .cardNote {
-  color: var(--xa-text-tertiary);
-}
+.supportDialog { width: min(940px, calc(100% - 2rem)); max-height: calc(100dvh - 2rem); padding: clamp(1.5rem, 4vw, 3rem); border: 1px solid var(--xa-border); border-radius: 1.5rem; background: var(--xa-page); color: var(--xa-text); box-shadow: 0 32px 100px rgba(0, 0, 0, 0.3); }
+.supportDialog::backdrop { background: rgba(16, 17, 16, 0.72); }
+.supportDialog h2 { margin: 0 2rem 0 0; font-size: clamp(1.6rem, 3vw, 2.25rem); font-weight: 740; letter-spacing: -0.04em; }
+.dialogIntro { margin: 0.5rem 0 1.5rem; color: var(--xa-text-secondary); font-size: 0.9rem; }
+.dialogClose { position: absolute; top: 1.2rem; right: 1.2rem; width: 2.5rem; height: 2.5rem; border: 1px solid var(--xa-border); border-radius: 50%; background: var(--xa-surface); color: var(--xa-text); font-size: 1.5rem; line-height: 1; cursor: pointer; }
+.paymentGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem; }
+.paymentCard { display: flex; min-width: 0; flex-direction: column; gap: 1rem; padding: 1.15rem; border: 1px solid var(--xa-border); border-radius: 1.1rem; background: var(--xa-surface); box-shadow: var(--xa-shadow-sm); }
+.paymentHeader { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.paymentHeader strong { font-size: 0.95rem; }
+.paymentHeader i { padding: 0.3rem 0.5rem; border-radius: 2rem; font-size: 0.6rem; font-style: normal; font-weight: 700; }
+.wechatBadge { background: #e2f5e7; color: #07854b; }
+.alipayBadge { background: #e3f0ff; color: #1677ff; }
+.stripeBadge { background: #33305e; color: #b8adff; }
+.qrFrame { display: flex; align-items: center; justify-content: center; padding: 0.7rem; border-radius: 0.8rem; background: #f0efe9; }
+.qrFrame img { display: block; width: 100%; max-width: 190px; border-radius: 0.55rem; background: white; }
+.paymentCard > span { margin-top: auto; color: var(--xa-text-secondary); font-size: 0.72rem; text-align: center; }
+.stripePayment { justify-content: space-between; background: radial-gradient(circle at 100% 0, #29254b, transparent 55%), #191a18; color: white; }
+.stripePayment b { display: block; font-size: clamp(2.6rem, 5vw, 4rem); letter-spacing: -0.06em; line-height: 1; }
+.stripePayment div > span { display: block; margin-top: 0.6rem; color: #c6c6c6; font-size: 0.75rem; }
+.stripePayment a { padding: 0.8rem; border-radius: 0.7rem; background: white; color: #1b1c1b; font-size: 0.8rem; font-weight: 700; text-align: center; text-decoration: none; }
+.dialogFooter { display: flex; justify-content: flex-end; margin-top: 1.5rem; }
 
 @media (max-width: 760px) {
-  .page {
-    width: calc(100% - 2rem);
-    padding-top: 4rem;
-  }
-
-  .title {
-    font-size: clamp(3.2rem, 15vw, 4.5rem);
-  }
-
-  .choiceGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .choiceCard {
-    min-height: 30rem;
-    padding: 1.5rem;
-    border-radius: 1.5rem;
-  }
-
-  .cardCopy {
-    padding-top: 4rem;
-  }
-
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .supportButton,
-  .downloadButton {
-    transition: none;
-  }
-
-  .supportButton:hover,
-  .downloadButton:hover {
-    transform: none;
-  }
+  .page { min-height: 0; padding: 3rem 1rem 5rem; }
+  .paymentGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .paymentCard { padding: 0.75rem; }
+  .stripePayment { grid-column: 1 / -1; gap: 1rem; }
+  .stripePayment b { font-size: 2.5rem; }
+  .dialogDownload { width: 100%; }
 }

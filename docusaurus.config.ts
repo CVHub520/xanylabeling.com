@@ -71,7 +71,7 @@ async function fetchReleaseInfo(): Promise<{
     const installers = assets.some((asset) => asset.name === 'update-manifest.json')
       ? assets.flatMap((asset) => {
           const windows = asset.name.match(/-Windows-(CPU|CUDA11|CUDA12|CUDA13)-Setup\.exe$/);
-          const linux = asset.name.match(/-Linux-(CPU|CUDA11|CUDA12|CUDA13)-Portable\.tar\.gz$/);
+          const linux = asset.name.match(/-Linux-(CPU|CUDA11|CUDA12|CUDA13)(?:-Portable\.tar\.gz)?$/);
           const mac = asset.name.match(/-macOS-(arm64|x86_64|universal2)(?:-unsigned)?\.dmg$/);
           const label = windows ? `Windows x64 · ${windows[1]}`
             : linux ? `Linux x64 · ${linux[1]}`

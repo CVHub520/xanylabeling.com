@@ -30,6 +30,7 @@
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "three": "^0.187.0",
     "yaml": "^2.9.0"
   },
   "devDependencies": {
@@ -37,6 +38,7 @@
     "@docusaurus/tsconfig": "^3.10.2",
     "@docusaurus/types": "^3.10.2",
     "@types/react": "^19.0.0",
+    "@types/three": "^0.187.0",
     "typescript": "~6.0.2"
   },
   "browserslist": {

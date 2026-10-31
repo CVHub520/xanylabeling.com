@@ -30,10 +30,40 @@
 }
 
 .heroInner {
+  position: relative;
+  z-index: 1;
   width: min(100%, 1120px);
   margin: 0 auto;
   text-align: center;
 }
+
+.pointCloudStage {
+  position: relative;
+  overflow: hidden;
+  width: calc(100% + 2 * var(--page-pad));
+  margin: calc(-1 * clamp(2.25rem, 3.25vw, 3rem)) calc(-1 * var(--page-pad)) 0;
+  min-height: clamp(38rem, 51vw, 48rem);
+  padding: clamp(4rem, 6vw, 6rem) var(--page-pad) 8rem;
+  background: radial-gradient(ellipse at 50% 55%, #17221d, #080c0b 70%);
+}
+
+.pointCloudStage::after {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 12rem;
+  background: linear-gradient(to bottom, transparent, var(--xa-page));
+  content: '';
+  pointer-events: none;
+}
+
+.pointCloudStage .heroTitle { color: #fff; text-shadow: 0 2px 24px #080c0b; }
+.pointCloudStage .heroTitle span { color: #ff9069; }
+.pointCloudStage .primaryButton { background: #fff; color: #181a18 !important; }
+.pointCloudStage .secondaryButton { background: rgba(20, 25, 22, 0.75); border-color: rgba(255, 255, 255, 0.3); color: #fff !important; }
+.pointCloudStage .secondaryButton:hover { background: #fff; color: #181a18 !important; }
 
 .heroTitle {
   margin: 0 auto 1rem;
@@ -127,8 +157,9 @@
 
 .productStage {
   position: relative;
+  z-index: 1;
   width: min(100%, 1240px);
-  margin: clamp(1.25rem, 1.75vw, 1.75rem) auto 0;
+  margin: -6rem auto 0;
 }
 
 .appWindow {
@@ -859,6 +890,13 @@
     padding-top: 2.5rem;
   }
 
+  .pointCloudStage {
+    margin-top: -2.5rem;
+    min-height: 35rem;
+  }
+
+  .productStage { margin-top: -4rem; }
+
   .heroTitle {
     font-size: clamp(2.6rem, 10.5vw, 3.2rem);
   }
@@ -867,10 +905,6 @@
     flex-direction: column;
     align-items: stretch;
     padding: 0 0.5rem;
-  }
-
-  .productStage {
-    margin-top: 1.25rem;
   }
 
   .institutionSection {

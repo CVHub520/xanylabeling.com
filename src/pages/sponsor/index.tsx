@@ -9,10 +9,6 @@ import styles from './sponsor.module.css';
 
 const STRIPE_PAYMENT_LINK =
   'https://buy.stripe.com/7sY7sD0HG9K8gHFdGwdIA00';
-const GITHUB_RELEASES =
-  'https://github.com/CVHub520/X-AnyLabeling/releases/latest';
-const GITHUB_REPOSITORY =
-  'https://github.com/CVHub520/X-AnyLabeling';
 
 const sponsorCopy = {
   en: {
@@ -23,12 +19,6 @@ const sponsorCopy = {
     heading: 'Keep better labeling tools',
     headingAccent: 'open to everyone.',
     lede: 'Help X-AnyLabeling keep improving for the long run.',
-    download: 'Download free from GitHub',
-    source: 'View source',
-    methodsEyebrow: 'Choose a method',
-    methodsTitle: 'Three simple ways to help.',
-    methodsText:
-      'Sponsorship is completely optional. Use a familiar local payment method or choose Stripe for a secure international payment. X-AnyLabeling remains free and open source, and every public release is always available on GitHub.',
     wechat: {
       name: 'WeChat Pay',
       note: 'For supporters in mainland China',
@@ -81,12 +71,6 @@ const sponsorCopy = {
     heading: '让更好的标注工具',
     headingAccent: '始终向每个人开放。',
     lede: '让 X-AnyLabeling 持续进步，也走得更长远。',
-    download: '从 GitHub 免费下载',
-    source: '查看源代码',
-    methodsEyebrow: '选择支持方式',
-    methodsTitle: '三种简单的支持渠道。',
-    methodsText:
-      '赞助完全自愿。国内用户可以选择熟悉的支付方式，海外用户可以通过 Stripe 安全支付。X-AnyLabeling 将继续保持免费和开源，所有公开版本始终可以从 GitHub 下载。',
     wechat: {
       name: '微信支付',
       note: '适合中国大陆用户',
@@ -134,14 +118,6 @@ const sponsorCopy = {
   },
 } as const;
 
-function ArrowIcon(): ReactNode {
-  return (
-    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M2.75 8h10.5M9.25 4l4 4-4 4" />
-    </svg>
-  );
-}
-
 function ExternalIcon(): ReactNode {
   return (
     <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -164,16 +140,6 @@ function ScanIcon(): ReactNode {
     <svg viewBox="0 0 18 18" fill="none" aria-hidden="true">
       <path d="M2.5 6V3.5a1 1 0 0 1 1-1H6M12 2.5h2.5a1 1 0 0 1 1 1V6M15.5 12v2.5a1 1 0 0 1-1 1H12M6 15.5H3.5a1 1 0 0 1-1-1V12" />
       <path d="M6.25 6.25h2v2h-2zM10.25 6.25h1.5v1.5h-1.5zM6.25 10.25h1.5v1.5h-1.5zM10.25 10.25h2v2h-2z" />
-    </svg>
-  );
-}
-
-function ChoiceIcon(): ReactNode {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path d="M4 4v2.2a3.8 3.8 0 0 0 3.8 3.8H16" />
-      <path d="M4 16v-2.2A3.8 3.8 0 0 1 7.8 10" />
-      <path d="m13.25 7.25 2.75 2.75-2.75 2.75" />
     </svg>
   );
 }
@@ -212,25 +178,6 @@ export default function Sponsor(): ReactNode {
         </header>
 
         <section className={styles.methodsSection}>
-          <div className={styles.openPromise}>
-            <div>
-              <span className={styles.promiseMark}><ChoiceIcon /></span>
-              <div>
-                <p className={styles.eyebrow}>{copy.methodsEyebrow}</p>
-                <Heading as="h2">{copy.methodsTitle}</Heading>
-                <p>{copy.methodsText}</p>
-              </div>
-            </div>
-            <div className={styles.promiseActions}>
-              <Link className={styles.primaryButton} to={GITHUB_RELEASES}>
-                {copy.download} <ExternalIcon />
-              </Link>
-              <Link className={styles.textLink} to={GITHUB_REPOSITORY}>
-                {copy.source} <ArrowIcon />
-              </Link>
-            </div>
-          </div>
-
           <div className={styles.methodGrid}>
             <article className={`${styles.qrCard} ${styles.wechatCard}`}>
               <div className={styles.cardHeader}>

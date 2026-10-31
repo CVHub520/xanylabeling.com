@@ -4,6 +4,7 @@ import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import useBaseUrl, {useBaseUrlUtils} from '@docusaurus/useBaseUrl';
 
+import PointCloudBackground from '../components/PointCloudBackground';
 import {useLocalizedContent} from '../utils/useLocalizedContent';
 import styles from './index.module.css';
 
@@ -496,20 +497,23 @@ export default function Home(): ReactNode {
       <main className={styles.page}>
         <section className={styles.hero}>
           <div className={styles.heroGlow} aria-hidden="true" />
-          <div className={styles.heroInner}>
-            <Heading as="h1" className={styles.heroTitle}>
-              {copy.heroTitle}
-              <span>{copy.heroAccent}</span>
-            </Heading>
-            <div className={styles.heroActions}>
-              <Link className={styles.primaryButton} to="/download">
-                {copy.download}
-                <DownloadIcon />
-              </Link>
-              <Link className={styles.secondaryButton} to="/docs/x-anylabeling/get_started">
-                {copy.quickStart}
-                <ArrowRightIcon />
-              </Link>
+          <div className={styles.pointCloudStage}>
+            <PointCloudBackground />
+            <div className={styles.heroInner}>
+              <Heading as="h1" className={styles.heroTitle}>
+                {copy.heroTitle}
+                <span>{copy.heroAccent}</span>
+              </Heading>
+              <div className={styles.heroActions}>
+                <Link className={styles.primaryButton} to="/download">
+                  {copy.download}
+                  <DownloadIcon />
+                </Link>
+                <Link className={styles.secondaryButton} to="/docs/x-anylabeling/get_started">
+                  {copy.quickStart}
+                  <ArrowRightIcon />
+                </Link>
+              </div>
             </div>
           </div>
 
