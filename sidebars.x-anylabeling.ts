@@ -1,4 +1,5 @@
 import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
+import productData from './.generated/data/x-anylabeling.json';
 
 const sidebars: SidebarsConfig = {
   docsSidebar: [
@@ -21,14 +22,8 @@ const sidebars: SidebarsConfig = {
       label: 'Workflows',
       collapsed: false,
       link: {type: 'generated-index', slug: '/workflow-guides'},
-      items: [
-        'point_cloud',
-        'image_classifier',
-        'paddle_ocr',
-        'video_classifier',
-        'vqa',
-        'chatbot',
-      ],
+      // Keep document IDs and ordering aligned with the product manifest.
+      items: productData.workflows.map(({document}) => document.replace(/\.md$/, '')),
     },
     {
       type: 'category',
