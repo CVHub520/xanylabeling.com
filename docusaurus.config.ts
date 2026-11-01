@@ -229,16 +229,16 @@ export default async function createConfig(): Promise<Config> {
             className: 'navbar-release-link',
           },
           {
-            type: 'localeDropdown',
-            position: 'right',
-          },
-          {
             type: 'custom-githubStars',
             href: `https://github.com/${GITHUB_REPO}`,
             label: starLabel,
             position: 'right',
             className: 'header-github-link header-github-star-link',
             'aria-label': 'GitHub repository',
+          },
+          {
+            type: 'localeDropdown',
+            position: 'right',
           },
         ],
       },

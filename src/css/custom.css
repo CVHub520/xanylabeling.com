@@ -525,7 +525,16 @@ code { padding: 0.12rem 0.35rem; border: 0; border-radius: 5px; }
     color: var(--xa-text);
   }
   .header-github-link { display: none; }
-  .navbar__search-input { width: clamp(5.5rem, 28vw, 8rem); }
+  .navbar-sidebar .navbar-release-link:not(.navbar-sidebar__release) { display: none; }
+  .navbar-sidebar__release { margin-left: auto; margin-right: 0.5rem; }
+  .navbar-sidebar .header-github-link {
+    display: inline-flex;
+    justify-content: flex-start;
+    margin-left: 0;
+    font-size: 0.85rem;
+  }
+  .navbar__search-input { width: clamp(5.5rem, 28vw, 8rem); padding-right: 2rem; }
+  .navbar__search kbd { display: none; }
   .theme-doc-sidebar-container { border-right: 0 !important; }
   .theme-doc-markdown table { display: block; }
 }
