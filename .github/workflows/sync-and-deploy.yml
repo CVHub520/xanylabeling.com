@@ -147,12 +147,7 @@ jobs:
           OSS_REGION: ${{ vars.OSS_REGION }}
         run: |
           set -euo pipefail
-          ossutil sync \
-            build/ \
-            "oss://${OSS_BUCKET}/" \
-            --delete \
-            --dry-run \
-            --force
+          bash scripts/oss/sync.sh --dry-run
 
       - name: Deploy to Alibaba Cloud OSS
         env:
@@ -162,11 +157,8 @@ jobs:
           OSS_REGION: ${{ vars.OSS_REGION }}
         run: |
           set -euo pipefail
-          ossutil sync \
-            build/ \
-            "oss://${OSS_BUCKET}/" \
-            --delete \
-            --force
+          bash scripts/oss/sync.sh
+          bash scripts/oss/apply-cache-control.sh
 
       - name: Verify live website
         run: |

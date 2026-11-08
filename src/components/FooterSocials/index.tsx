@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
 
@@ -79,11 +79,12 @@ function SocialIcon({icon}: {icon: string}) {
 }
 
 function QrItem({social}: {social: QrSocial}) {
+  const [loaded, setLoaded] = useState(false);
   const qrSrc = useBaseUrl(`/img/social/qr/${social.qr}`);
   const popoverId = `footer-${social.icon}-qr`;
 
   return (
-    <span className={styles.item}>
+    <span className={styles.item} onMouseEnter={() => setLoaded(true)} onFocus={() => setLoaded(true)}>
       <button
         className={styles.iconButton}
         type="button"
@@ -92,13 +93,13 @@ function QrItem({social}: {social: QrSocial}) {
         <SocialIcon icon={social.icon} />
       </button>
       <span className={styles.popover} id={popoverId} role="tooltip">
-        <img
+        {loaded && <img
           className={styles.qr}
           src={qrSrc}
           alt={`${social.name} QR code`}
           loading="lazy"
           decoding="async"
-        />
+        />}
         <span className={styles.caption}>
           Follow X-AnyLabeling on {social.name}.
         </span>

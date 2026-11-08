@@ -5,6 +5,7 @@ import styles from './styles.module.css';
 export default function PointCloudBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const dataUrl = useBaseUrl('/data/pointcloud-hero.bin');
+  const compressedDataUrl = useBaseUrl('/data/pointcloud-hero.dat');
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -15,12 +16,25 @@ export default function PointCloudBackground() {
     let cancelled = false;
 
     async function setup() {
+      async function loadData(): Promise<ArrayBuffer> {
+        if (typeof DecompressionStream !== 'undefined') {
+          try {
+            const response = await fetch(compressedDataUrl, {signal: controller.signal});
+            if (!response.ok || !response.body) throw new Error('Point cloud unavailable');
+            return await new Response(response.body.pipeThrough(new DecompressionStream('gzip'))).arrayBuffer();
+          } catch (error) {
+            if (controller.signal.aborted) throw error;
+          }
+        }
+        const response = await fetch(dataUrl, {signal: controller.signal});
+        if (!response.ok) throw new Error('Point cloud unavailable');
+        return response.arrayBuffer();
+      }
       const [THREE, response] = await Promise.all([
         import('three'),
-        fetch(dataUrl, {signal: controller.signal}),
+        loadData(),
       ]);
-      if (!response.ok) throw new Error('Point cloud unavailable');
-      const data = new DataView(await response.arrayBuffer());
+      const data = new DataView(response);
       if (cancelled || data.byteLength % 9 !== 0) return;
       const mobile = window.matchMedia('(max-width: 600px)').matches;
       const count = Math.floor(data.byteLength / 9);
@@ -108,7 +122,7 @@ export default function PointCloudBackground() {
       controller.abort();
       dispose();
     };
-  }, [dataUrl]);
+  }, [compressedDataUrl, dataUrl]);
 
   return <canvas ref={canvasRef} className={styles.canvas} aria-hidden="true" />;
 }

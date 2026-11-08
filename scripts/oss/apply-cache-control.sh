@@ -2,28 +2,33 @@
 
 set -euo pipefail
 
-bucket="oss://xanylabeling-web-prod/"
+bucket="oss://${OSS_BUCKET:-xanylabeling-web-prod}/"
 dry_run=()
+age_filter=(--max-age 1d)
 
-if [[ "${1:-}" == "--dry-run" ]]; then
-  dry_run=(--dry-run)
-elif [[ -n "${1:-}" ]]; then
-  echo "Usage: $0 [--dry-run]" >&2
-  exit 2
-fi
+for arg in "$@"; do
+  case "$arg" in
+    --dry-run) dry_run=(--dry-run) ;;
+    --all) age_filter=() ;;
+    *) echo "Usage: $0 [--dry-run] [--all]" >&2; exit 2 ;;
+  esac
+done
 
 common=(
   "$bucket"
   --recursive
   --force
   --quiet
-  --max-age 1d
+  "${age_filter[@]}"
   --metadata-directive update
 )
 
 # Apply a safe default first, then override long-lived binary assets,
 # content-hashed application bundles, and HTML documents.
 ossutil set-props "${common[@]}" \
+  --exclude "*.html" \
+  --exclude 'assets/js/**' --exclude 'assets/css/**' \
+  --exclude 'zh-Hans/assets/js/**' --exclude 'zh-Hans/assets/css/**' \
   --cache-control "public, max-age=86400" \
   "${dry_run[@]}"
 
@@ -44,6 +49,8 @@ ossutil set-props "${common[@]}" \
 ossutil set-props "${common[@]}" \
   --include "assets/css/**" \
   --include "assets/js/**" \
+  --include "zh-Hans/assets/css/**" \
+  --include "zh-Hans/assets/js/**" \
   --cache-control "public, max-age=31536000, immutable" \
   "${dry_run[@]}"
 

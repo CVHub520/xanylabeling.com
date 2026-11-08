@@ -148,7 +148,7 @@ const recentFeaturesEn: RecentFeature[] = [
     href: '/workflows#paddle-ocr',
     linkLabel: 'See the document workflow',
     video: 'https://media.xanylabeling.com/videos/document-parsing.mp4',
-    poster: '/img/demos/document-parsing-poster.jpg',
+    poster: '/img/demos/document-parsing-poster.webp',
   },
   {
     eyebrow: 'Video classifier',
@@ -158,7 +158,7 @@ const recentFeaturesEn: RecentFeature[] = [
     href: '/workflows#video-classifier',
     linkLabel: 'See the video workflow',
     video: 'https://media.xanylabeling.com/videos/video-classifier-home.mp4',
-    poster: '/img/demos/video-classifier-poster.jpg',
+    poster: '/img/demos/video-classifier-poster.webp',
   },
   {
     eyebrow: 'Chatbot',
@@ -168,7 +168,7 @@ const recentFeaturesEn: RecentFeature[] = [
     href: '/workflows#chatbot',
     linkLabel: 'See the chatbot workflow',
     video: 'https://media.xanylabeling.com/videos/chatbot.mp4',
-    poster: '/img/demos/chatbot-poster.jpg',
+    poster: '/img/demos/chatbot-poster.webp',
   },
 ];
 
@@ -180,7 +180,7 @@ const recentFeaturesZh: RecentFeature[] = [
     href: '/workflows#paddle-ocr',
     linkLabel: '查看文档工作流',
     video: 'https://media.xanylabeling.com/videos/document-parsing.mp4',
-    poster: '/img/demos/document-parsing-poster.jpg',
+    poster: '/img/demos/document-parsing-poster.webp',
   },
   {
     eyebrow: '视频分类器',
@@ -189,7 +189,7 @@ const recentFeaturesZh: RecentFeature[] = [
     href: '/workflows#video-classifier',
     linkLabel: '查看视频工作流',
     video: 'https://media.xanylabeling.com/videos/video-classifier-home.mp4',
-    poster: '/img/demos/video-classifier-poster.jpg',
+    poster: '/img/demos/video-classifier-poster.webp',
   },
   {
     eyebrow: '聊天机器人',
@@ -198,7 +198,7 @@ const recentFeaturesZh: RecentFeature[] = [
     href: '/workflows#chatbot',
     linkLabel: '查看聊天机器人工作流',
     video: 'https://media.xanylabeling.com/videos/chatbot.mp4',
-    poster: '/img/demos/chatbot-poster.jpg',
+    poster: '/img/demos/chatbot-poster.webp',
   },
 ];
 
@@ -483,10 +483,10 @@ export default function Home(): ReactNode {
   const capabilities = useLocalizedContent(capabilitiesEn, capabilitiesZh);
   const recentFeatures = useLocalizedContent(recentFeaturesEn, recentFeaturesZh);
   const interfaceImage = useBaseUrl('/img/interface-v2.webp');
-  const samPoster = useBaseUrl('/img/demos/sam3-poster.png');
-  const modelFirstPassPoster = useBaseUrl('/img/demos/model-first-pass-poster.jpg');
+  const samPoster = useBaseUrl('/img/demos/sam3-poster.webp');
+  const modelFirstPassPoster = useBaseUrl('/img/demos/model-first-pass-poster.webp');
   const modelFirstPassVideo = 'https://media.xanylabeling.com/videos/model-first-pass.mp4';
-  const trainingPoster = useBaseUrl('/img/demos/training-poster.jpg');
+  const trainingPoster = useBaseUrl('/img/demos/training-poster.webp');
   const trainingVideo = 'https://media.xanylabeling.com/videos/ultralytics-training.mp4';
   const {withBaseUrl} = useBaseUrlUtils();
 
@@ -554,7 +554,7 @@ export default function Home(): ReactNode {
           <div className={styles.storyList}>
             <article className={styles.storyRow}>
               <div className={styles.storyVisual}>
-                <video autoPlay loop muted playsInline preload="metadata" poster={modelFirstPassPoster} aria-label={copy.stories[0].mediaLabel}>
+                <video controls muted playsInline preload="none" poster={modelFirstPassPoster} aria-label={copy.stories[0].mediaLabel}>
                   <source src={modelFirstPassVideo} type="video/mp4" />
                 </video>
               </div>
@@ -584,7 +584,7 @@ export default function Home(): ReactNode {
 
             <article className={styles.storyRow}>
               <div className={styles.storyVisual}>
-                <video controls muted playsInline preload="metadata" poster={trainingPoster} aria-label={copy.stories[2].mediaLabel}>
+                <video controls muted playsInline preload="none" poster={trainingPoster} aria-label={copy.stories[2].mediaLabel}>
                   <source src={trainingVideo} type="video/mp4" />
                 </video>
               </div>
@@ -641,7 +641,7 @@ export default function Home(): ReactNode {
                       controls
                       muted
                       playsInline
-                      preload="metadata"
+                      preload="none"
                       poster={withBaseUrl(feature.poster)}
                       aria-label={`${feature.title} ${copy.demoLabel}`}>
                       <source src={feature.video} type="video/mp4" />
